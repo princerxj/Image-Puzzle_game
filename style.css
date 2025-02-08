@@ -6,7 +6,7 @@ body {
     color: #fff;
 }
 body {
-    background: linear-gradient(45deg, #1f8fc3, #143db97b, #fad0c4, #ffdde1);
+    background: linear-gradient(45deg, #d26b7e, #143db97b, #820ecf, #e8880a);
     background-size: 300% 300%;
     animation: gradientAnimation 8s infinite linear;
     height: 100vh;
@@ -29,7 +29,7 @@ h1 {
     font-size: 3rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     -webkit-text-stroke: 0.5px #101010;
-    color: #ff9a9e;
+    color: #fa0879;
 }
 
 .game-container {
@@ -110,6 +110,7 @@ h1 {
 
 .buttons button:hover {
     background: #e17055;
+    color: #FFFFFF;
     transform: translateY(-2px);
 }
 
