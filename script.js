@@ -4,9 +4,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkBtn = document.getElementById("check-btn");
     const resetBtn = document.getElementById("reset-btn");
     const result = document.getElementById("result");
+    const imageUpload = document.getElementById("imageUpload");
 
-    const imageSrc = "images.png"; // Change this to your image
+    let defaultImageSrc = "images.png";
+    let currentImageSrc = defaultImageSrc;
     let correctOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+    function cropImageToSquare(originalImage) {
+        const canvas = document.createElement('canvas');
+        const size = Math.min(originalImage.width, originalImage.height);
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        const offsetX = (originalImage.width - size) / 2;
+        const offsetY = (originalImage.height - size) / 2;
+        
+        ctx.drawImage(
+            originalImage,
+            offsetX, offsetY, size, size,
+            0, 0, size, size 
+        );
+        
+        return canvas.toDataURL('image/jpeg');
+    }
+
+    imageUpload.addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    if (img.width === img.height) {
+                        currentImageSrc = event.target.result;
+                        setupPuzzle();
+                    } else {
+                        const shouldCrop = confirm("The image is not square. Would you like to automatically crop it to square? Click 'Cancel' to use default image instead.");
+                        if (shouldCrop) {
+                            currentImageSrc = cropImageToSquare(img);
+                            setupPuzzle();
+                        } else {
+                            currentImageSrc = defaultImageSrc;
+                            imageUpload.value = '';
+                            setupPuzzle();
+                        }
+                    }
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
     function getInversionCount(arr) {
         let invCount = 0;
@@ -31,7 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setupPuzzle() {
         piecesContainer.innerHTML = "";
+        piecesContainer.style.display = "grid";
         let shuffledOrder = generateSolvableShuffle();
+        
+        document.querySelectorAll(".cell").forEach(cell => cell.innerHTML = "");
+        
         shuffledOrder.forEach(i => {
             let piece = document.createElement("div");
             piece.classList.add("piece");
@@ -40,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let x = (i % 3) * -100;
             let y = Math.floor(i / 3) * -100;
-            piece.style.backgroundImage = `url('${imageSrc}')`;
+            piece.style.backgroundImage = `url('${currentImageSrc}')`;
             piece.style.backgroundPosition = `${x}px ${y}px`;
 
             piecesContainer.appendChild(piece);
@@ -91,16 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentOrder.push(null);
             }
         });
-
         result.textContent = JSON.stringify(currentOrder) === JSON.stringify(correctOrder) ? "🎉 You Win!" : "❌ Try Again!";
     });
-
     resetBtn.addEventListener("click", () => {
         result.textContent = "";
-        document.querySelectorAll(".cell").forEach(cell => cell.innerHTML = "");
-        piecesContainer.style.display = "flex";
         setupPuzzle();
     });
-
     setupPuzzle();
 });
