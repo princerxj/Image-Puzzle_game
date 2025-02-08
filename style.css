@@ -29,7 +29,7 @@ h1 {
     font-size: 3rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     -webkit-text-stroke: 0.5px #101010;
-    color: #fa0879;
+    color: #ffffff;
 }
 
 .game-container {
@@ -44,10 +44,10 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
-    width: 350px;
-    height: 350px;
-    padding: 10px;
+    gap: 8px;
+    width: 310px;
+    height: 310px;
+    padding: 5px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
@@ -122,15 +122,9 @@ h1 {
 }
 
 @media (max-width: 400px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-    
     .grid, .pieces {
         width: 240px;
         height: 240px;
-        padding: 5px;
-        gap: 8px;
     }
     .cell, .piece {
         width: 80px;
