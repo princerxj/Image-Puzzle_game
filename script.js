@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const hint = document.getElementById("hint");
+    const hintImg = document.getElementById("hint-image");
     const grid = document.getElementById("grid");
     const piecesContainer = document.getElementById("pieces");
     const checkBtn = document.getElementById("check-btn");
@@ -133,6 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
             piecesContainer.style.display = "none";
         }
     }
+
+    hint.addEventListener("click", () => {
+        hintImg.src = currentImageSrc;
+        hintImg.style.display = "flex";
+        setTimeout(() => {
+            hintImg.style.display = "none";
+        }, 3000);
+    });
 
     checkBtn.addEventListener("click", () => {
         let currentOrder = [];

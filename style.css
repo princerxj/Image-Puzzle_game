@@ -161,3 +161,31 @@ h1 {
 .footer {
     font-size: 15px;
 }
+
+#hint-image {
+    display: none;
+}
+
+#hint {
+    background: linear-gradient(45deg, #00eaff, #007bff);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    letter-spacing: 3px;
+}
+  
+#hint:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+  
+#hint:active {
+    transform: scale(0.95);
+    background: linear-gradient(45deg, #007bff, #00eaff);
+}
