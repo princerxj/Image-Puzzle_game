@@ -44,9 +44,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 8px;
-    width: 310px;
-    height: 310px;
+    gap: 2px;
+    width: 320px;
+    height: 320px;
     padding: 5px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -127,8 +127,8 @@ h1 {
         height: 240px;
     }
     .cell, .piece {
-        width: 80px;
-        height: 80px;
+        width: 74px;
+        height: 74px;
     }
 }
 
