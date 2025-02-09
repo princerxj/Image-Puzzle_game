@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const result = document.getElementById("result");
     const imageUpload = document.getElementById("imageUpload");
 
-    let defaultImageSrc = "images.png";
+    let defaultImageSrc = "https://picsum.photos/500";
     let currentImageSrc = defaultImageSrc;
     let correctOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -143,7 +143,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentOrder.push(null);
             }
         });
-        result.textContent = JSON.stringify(currentOrder) === JSON.stringify(correctOrder) ? "🎉 You Win!" : "❌ Try Again!";
+        result.textContent = JSON.stringify(currentOrder) === JSON.stringify(correctOrder) 
+    ? ("🎉 You Win!", grid.style.gap = "0px", "🎉 You Win!") 
+    : "❌ Try Again!";
+
     });
     resetBtn.addEventListener("click", () => {
         result.textContent = "";
