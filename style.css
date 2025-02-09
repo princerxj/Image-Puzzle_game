@@ -130,6 +130,10 @@ h1 {
         width: 74px;
         height: 74px;
     }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -164,6 +168,9 @@ h1 {
 
 #hint-image {
     display: none;
+    width : 200px;
+    height: 200px;
+    transform: translateX(40vw);
 }
 
 #hint {
@@ -178,6 +185,7 @@ h1 {
     transition: all 0.3s ease-in-out;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     letter-spacing: 3px;
+    margin: 10px;
 }
   
 #hint:hover {

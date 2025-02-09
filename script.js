@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const result = document.getElementById("result");
     const imageUpload = document.getElementById("imageUpload");
 
-    let defaultImageSrc = "https://picsum.photos/500";
+    const defaultImageSrc = "https://picsum.photos/500";
     let currentImageSrc = defaultImageSrc;
     let correctOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
